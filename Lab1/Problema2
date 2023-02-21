@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cstdio>
+#include <string>
+using namespace std;
+
+int Convertire(string& nr_char)
+{
+    int nr = 0,i;
+    for (i = 0 ; i < nr_char.length(); i++) 
+    {
+        if (nr_char[i] >= '0' && nr_char[i] <= '9') 
+        {
+            nr = nr * 10 + (nr_char[i] - '0');
+        }
+    }
+    return nr;
+}
+int suma;
+char numere[100];
+int main() {
+    FILE *fp;
+    fp = fopen("in.txt", "r");
+    while (fgets(numere, 100, fp) != NULL) 
+    {
+        string s = numere;
+        suma = suma + Convertire(s);
+    }
+    printf("%d\n", suma);
+    fclose(fp);
+    return 0;
+}
